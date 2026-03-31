@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -46,15 +45,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="flex items-center group">
-            <Image
-              src="/axonedge-logo.jpg"
-              alt="AxonEdge Technologies"
-              width={140}
-              height={50}
-              className="h-10 w-auto object-contain"
-              priority
-            />
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="flex items-center gap-2 group">
+            <div className="w-8 h-8 rounded-md bg-gradient-to-br from-[#386aff] to-[#1a3aff] flex items-center justify-center shadow-lg shadow-[#386aff]/30 group-hover:shadow-[#386aff]/50 transition-all duration-300">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 2L16 6V12L9 16L2 12V6L9 2Z" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
+                <path d="M9 2V9M9 9L16 6M9 9L2 6M9 9V16" stroke="white" strokeWidth="1" strokeOpacity="0.6"/>
+              </svg>
+            </div>
+            <span className="font-bold text-white text-lg tracking-tight">
+              Axon<span className="text-[#386aff]">Edge</span>
+            </span>
           </a>
 
           {/* Desktop Nav */}
