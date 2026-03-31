@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -45,13 +46,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-[#386aff] flex items-center justify-center text-white font-bold text-sm glow-blue group-hover:glow-blue-strong transition-all">
-              AX
-            </div>
-            <span className="font-bold text-white text-lg tracking-tight">
-              AxonEdge
-            </span>
+          <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="flex items-center group">
+            <Image
+              src="/axonedge-logo.jpg"
+              alt="AxonEdge Technologies"
+              width={140}
+              height={50}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </a>
 
           {/* Desktop Nav */}
