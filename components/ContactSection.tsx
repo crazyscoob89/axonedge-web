@@ -1,0 +1,171 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef, useState } from "react";
+
+export default function ContactSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`AxonEdge Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:alexm@axonedge.tech?subject=${subject}&body=${body}`;
+  };
+
+  const inputClass =
+    "w-full px-4 py-3 rounded-xl bg-[#150f1f] border border-[#386aff]/20 text-white placeholder-[#606080] focus:outline-none focus:border-[#386aff] focus:ring-1 focus:ring-[#386aff]/30 transition-all duration-200 text-sm";
+
+  return (
+    <section id="contact" className="py-24 bg-[#150f1f] relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-[#386aff]/5 blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Content */}
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#386aff]/20 bg-[#386aff]/10 text-[#386aff] text-xs font-semibold tracking-widest uppercase mb-6">
+              Get in Touch
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-black text-white mb-6">
+              Let&apos;s Build{" "}
+              <span className="gradient-text">Something</span>
+            </h2>
+            <p className="text-[#a0a0b8] text-lg mb-8 leading-relaxed">
+              Have an app idea? Need AI integrated into your business? Looking for
+              reliable IT services? Let&apos;s talk.
+            </p>
+
+            {/* Contact info */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 text-[#a0a0b8]">
+                <div className="w-10 h-10 rounded-lg bg-[#386aff]/10 border border-[#386aff]/20 flex items-center justify-center text-lg">
+                  📧
+                </div>
+                <div>
+                  <div className="text-xs text-[#606080] mb-0.5">Email</div>
+                  <a
+                    href="mailto:alexm@axonedge.tech"
+                    className="text-white hover:text-[#386aff] transition-colors font-medium"
+                  >
+                    alexm@axonedge.tech
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 text-[#a0a0b8]">
+                <div className="w-10 h-10 rounded-lg bg-[#386aff]/10 border border-[#386aff]/20 flex items-center justify-center text-lg">
+                  🌐
+                </div>
+                <div>
+                  <div className="text-xs text-[#606080] mb-0.5">Website</div>
+                  <span className="text-white font-medium">axonedge.tech</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 text-[#a0a0b8]">
+                <div className="w-10 h-10 rounded-lg bg-[#386aff]/10 border border-[#386aff]/20 flex items-center justify-center text-lg">
+                  📍
+                </div>
+                <div>
+                  <div className="text-xs text-[#606080] mb-0.5">Location</div>
+                  <span className="text-white font-medium">Miami, Florida</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right: Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <form
+              onSubmit={handleSubmit}
+              className="glass-card rounded-2xl p-8 space-y-5"
+            >
+              <div>
+                <label className="block text-xs font-semibold text-[#a0a0b8] uppercase tracking-widest mb-2">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Alex Martinez"
+                  required
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#a0a0b8] uppercase tracking-widest mb-2">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="you@company.com"
+                  required
+                  className={inputClass}
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#a0a0b8] uppercase tracking-widest mb-2">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell us what you're building..."
+                  required
+                  rows={5}
+                  className={`${inputClass} resize-none`}
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full px-6 py-4 bg-[#386aff] hover:bg-[#4f7eff] text-white font-bold rounded-xl transition-all duration-200 glow-blue hover:glow-blue-strong flex items-center justify-center gap-2"
+              >
+                Send Message
+                <span>→</span>
+              </button>
+              <p className="text-center text-xs text-[#606080]">
+                Opens your email client. Or email us directly at{" "}
+                <a
+                  href="mailto:alexm@axonedge.tech"
+                  className="text-[#386aff] hover:underline"
+                >
+                  alexm@axonedge.tech
+                </a>
+              </p>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
