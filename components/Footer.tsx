@@ -9,8 +9,10 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo + tagline */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#386aff] flex items-center justify-center text-white font-bold text-sm glow-blue">
-              AX
+            <div className="w-8 h-8 rounded-lg bg-[#386aff] flex items-center justify-center glow-blue">
+              <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2L10 8L2 14" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
             <div>
               <div className="font-bold text-white text-sm">AxonEdge Technologies</div>
