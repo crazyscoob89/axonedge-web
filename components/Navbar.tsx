@@ -46,8 +46,12 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }} className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-[#386aff] flex items-center justify-center text-white font-bold text-sm glow-blue group-hover:glow-blue-strong transition-all">
-              AX
+            <div className="w-8 h-8 rounded-lg bg-[#386aff] flex items-center justify-center glow-blue group-hover:glow-blue-strong transition-all">
+              <svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5.5 5C5.5 3.067 7.067 1.5 9 1.5C10.933 1.5 12.5 3.067 12.5 5C12.5 6.933 10.933 8.5 9 8.5C7.067 8.5 5.5 6.933 5.5 5Z" stroke="white" strokeWidth="1.5"/>
+                <path d="M9 5C9 3.067 10.567 1.5 12.5 1.5C14.433 1.5 16 3.067 16 5C16 6.933 14.433 8.5 12.5 8.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M9 5C9 6.933 7.433 8.5 5.5 8.5C3.567 8.5 2 6.933 2 5C2 3.067 3.567 1.5 5.5 1.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
             </div>
             <span className="font-bold text-white text-lg tracking-tight">
               AxonEdge
