@@ -17,7 +17,7 @@ const services = [
     title: "AI Solutions",
     description:
       "Custom AI systems that plug into your business. From ticket automation to natural language data queries.",
-    highlight: "Cortex AI",
+    highlight: "ARGUS AI",
   },
   {
     icon: "💼",
