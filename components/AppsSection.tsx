@@ -83,7 +83,7 @@ export default function AppsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="apps" className="py-24 bg-[#150f1f] relative overflow-hidden">
+    <section id="apps" className="py-32 bg-[#150f1f] relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#386aff]/5 blur-3xl pointer-events-none" />
 
@@ -94,13 +94,13 @@ export default function AppsSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#386aff]/20 bg-[#386aff]/10 text-[#386aff] text-xs font-semibold tracking-widest uppercase mb-4">
             App Studio
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            Our <span className="gradient-text">Apps</span>
+          <h2 className="text-5xl sm:text-6xl font-black text-white mb-4">
+            Our <span className="bg-gradient-to-r from-[#386aff] to-[#a78bfa] bg-clip-text text-transparent">Apps</span>
           </h2>
           <p className="text-[#a0a0b8] text-lg max-w-2xl mx-auto">
             Building the digital playground for the Latin community — and the
@@ -113,26 +113,26 @@ export default function AppsSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {apps.map((app) => (
             <motion.div
               key={app.name}
               variants={itemVariants}
-              className="glass-card rounded-2xl p-6 group hover:scale-[1.03] transition-all duration-300 cursor-default relative overflow-hidden"
+              className="group rounded-2xl p-8 cursor-default relative overflow-hidden border border-white/10 hover:border-[#386aff]/40 transition-all duration-300 hover:bg-gradient-to-br hover:from-[#386aff]/5 hover:to-transparent hover:scale-[1.02]"
             >
-              {/* Background glow */}
+              {/* Dynamic color glow on hover */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{
-                  background: `radial-gradient(circle at 50% 0%, ${app.color}15 0%, transparent 70%)`,
+                  background: `radial-gradient(circle at 50% 0%, ${app.color}10 0%, transparent 70%)`,
                 }}
               />
 
               {/* App icon */}
-              <div className="relative z-10 mb-5">
+              <div className="relative z-10 mb-6">
                 <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300"
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300"
                   style={{ background: `${app.color}20`, border: `1px solid ${app.color}30` }}
                 >
                   {app.emoji}
@@ -141,8 +141,8 @@ export default function AppsSection() {
 
               {/* App info */}
               <div className="relative z-10">
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <h3 className="text-lg font-bold text-white">{app.name}</h3>
+                <div className="flex items-start justify-between gap-2 mb-3">
+                  <h3 className="text-xl font-bold text-white">{app.name}</h3>
                   {app.status === "launch" ? (
                     <span className="shrink-0 px-2.5 py-1 rounded-full bg-[#386aff] text-white text-xs font-bold animate-pulse-glow">
                       Launching
@@ -153,7 +153,7 @@ export default function AppsSection() {
                     </span>
                   )}
                 </div>
-                <p className="text-[#a0a0b8] text-sm leading-relaxed mb-4">
+                <p className="text-[#a0a0b8] text-sm leading-relaxed mb-5">
                   {app.description}
                 </p>
 
@@ -195,7 +195,7 @@ export default function AppsSection() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.8 }}
-          className="text-center text-[#a0a0b8] text-sm mt-10"
+          className="text-center text-[#a0a0b8] text-sm mt-12"
         >
           12+ apps in the pipeline. The Latin app store doesn&apos;t exist yet.{" "}
           <span className="text-[#386aff] font-semibold">We&apos;re building it.</span>

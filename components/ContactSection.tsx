@@ -32,12 +32,12 @@ export default function ContactSection() {
     "w-full px-4 py-3 rounded-xl bg-[#150f1f] border border-[#386aff]/20 text-white placeholder-[#606080] focus:outline-none focus:border-[#386aff] focus:ring-1 focus:ring-[#386aff]/30 transition-all duration-200 text-sm";
 
   return (
-    <section id="contact" className="py-24 bg-[#150f1f] relative overflow-hidden">
+    <section id="contact" className="py-32 bg-[#150f1f] relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-[#386aff]/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Content */}
           <motion.div
             ref={ref}
@@ -48,11 +48,11 @@ export default function ContactSection() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#386aff]/20 bg-[#386aff]/10 text-[#386aff] text-xs font-semibold tracking-widest uppercase mb-6">
               Get in Touch
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-white mb-6">
+            <h2 className="text-5xl sm:text-6xl font-black text-white mb-6">
               Let&apos;s Build{" "}
-              <span className="gradient-text">Something</span>
+              <span className="bg-gradient-to-r from-[#386aff] to-[#a78bfa] bg-clip-text text-transparent">Something</span>
             </h2>
-            <p className="text-[#a0a0b8] text-lg mb-8 leading-relaxed">
+            <p className="text-[#a0a0b8] text-lg mb-10 leading-relaxed">
               Have an app idea? Need AI integrated into your business? Looking for
               reliable IT services? Let&apos;s talk.
             </p>
@@ -102,7 +102,7 @@ export default function ContactSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className="glass-card rounded-2xl p-8 space-y-5"
+              className="rounded-2xl p-10 space-y-6 border border-white/10"
             >
               <div>
                 <label className="block text-xs font-semibold text-[#a0a0b8] uppercase tracking-widest mb-2">
@@ -148,7 +148,7 @@ export default function ContactSection() {
               </div>
               <button
                 type="submit"
-                className="w-full px-6 py-4 bg-[#386aff] hover:bg-[#4f7eff] text-white font-bold rounded-xl transition-all duration-200 glow-blue hover:glow-blue-strong flex items-center justify-center gap-2"
+                className="w-full px-6 py-5 bg-[#386aff] hover:bg-[#4f7eff] text-white font-bold rounded-xl transition-all duration-200 glow-blue hover:glow-blue-strong flex items-center justify-center gap-2 text-base"
               >
                 Send Message
                 <span>→</span>
