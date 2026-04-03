@@ -2,47 +2,83 @@
 
 import { motion } from "framer-motion";
 
+const scrollTo = (href: string) => {
+  const el = document.querySelector(href);
+  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+};
+
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0712] border-t border-[#386aff]/10 py-10">
+    <footer className="bg-[#050d1a] border-t border-[#f59e0b]/8 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Logo + tagline */}
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#386aff] flex items-center justify-center glow-blue">
-              <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 2L10 8L2 14" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2.5 mb-3">
+              <div className="w-7 h-7 rounded-lg bg-[#f59e0b] flex items-center justify-center">
+                <svg width="10" height="14" viewBox="0 0 12 16" fill="none">
+                  <path d="M2 2L10 8L2 14" stroke="#050d1a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span className="font-bold text-white">AxonEdge Technologies</span>
             </div>
-            <div>
-              <div className="font-bold text-white text-sm">AxonEdge Technologies</div>
-              <div className="text-xs text-[#606080]">Build. Ship. Own.</div>
+            <p className="text-[#94a3b8] text-sm leading-relaxed">
+              AI Operations Consulting for growing businesses. We turn your data into decisions.
+            </p>
+          </div>
+
+          {/* Nav links */}
+          <div>
+            <p className="text-xs font-semibold text-[#94a3b8] uppercase tracking-widest mb-4">Quick Links</p>
+            <div className="flex flex-col gap-2.5">
+              {[
+                { label: "The Problem", href: "#pain" },
+                { label: "What We Build", href: "#services" },
+                { label: "How It Works", href: "#process" },
+                { label: "Industries", href: "#verticals" },
+              ].map((l) => (
+                <button
+                  key={l.href}
+                  onClick={() => scrollTo(l.href)}
+                  className="text-[#94a3b8] hover:text-[#f59e0b] transition-colors text-sm text-left"
+                >
+                  {l.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Links */}
-          <div className="flex items-center gap-6 text-sm text-[#a0a0b8]">
-            <a href="#apps" className="hover:text-white transition-colors">Apps</a>
-            <a href="#about" className="hover:text-white transition-colors">Services</a>
-            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+          {/* Contact */}
+          <div>
+            <p className="text-xs font-semibold text-[#94a3b8] uppercase tracking-widest mb-4">Get in Touch</p>
+            <div className="flex flex-col gap-3">
+              <a href="mailto:info@axonedge.tech"
+                className="flex items-center gap-2.5 text-sm text-[#94a3b8] hover:text-[#f59e0b] transition-colors">
+                <span className="text-base">📧</span>
+                info@axonedge.tech
+              </a>
+              <a href="https://axonedge.tech"
+                className="flex items-center gap-2.5 text-sm text-[#94a3b8] hover:text-[#f59e0b] transition-colors">
+                <span className="text-base">🌐</span>
+                axonedge.tech
+              </a>
+              <a href="mailto:info@axonedge.tech"
+                className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#050d1a] text-sm font-bold rounded-lg transition-all w-fit">
+                Book Free Audit →
+              </a>
+            </div>
           </div>
 
-          {/* Copyright */}
-          <div className="text-xs text-[#606080] text-center md:text-right">
-            <div>© 2026 AxonEdge Technologies, LLC</div>
-            <div className="mt-0.5">All rights reserved.</div>
-          </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-[#404060]">
-          <span>Built with Next.js · Deployed on Vercel</span>
-          <span>
-            <a href="mailto:alexm@axonedge.tech" className="hover:text-[#386aff] transition-colors">
-              alexm@axonedge.tech
-            </a>
-          </span>
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#475569]">
+          <span>© 2026 AxonEdge Technologies, LLC. All rights reserved.</span>
+          <span>Miami, Florida · Built with Next.js · Deployed on Vercel</span>
         </div>
+
       </div>
     </footer>
   );

@@ -1,20 +1,22 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import AppsSection from "@/components/AppsSection";
-import WhySection from "@/components/WhySection";
-import ContactSection from "@/components/ContactSection";
+import PainSection from "@/components/PainSection";
+import ServicesSection from "@/components/ServicesSection";
+import ProcessSection from "@/components/ProcessSection";
+import VerticalsSection from "@/components/VerticalsSection";
+import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-[#050d1a]">
       <Navbar />
       <HeroSection />
-      <AboutSection />
-      <AppsSection />
-      <WhySection />
-      <ContactSection />
+      <PainSection />
+      <ServicesSection />
+      <ProcessSection />
+      <VerticalsSection />
+      <CTASection />
       <Footer />
     </main>
   );
