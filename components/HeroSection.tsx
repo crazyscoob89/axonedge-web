@@ -13,7 +13,7 @@ const VERTICALS = [
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[#050d1a]">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[#0f1623]">
       <ParticleCanvas />
 
       {/* Grid overlay */}
@@ -50,9 +50,9 @@ export default function HeroSection() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-6"
           >
-            <span className="text-white block">Operational Clarity.</span>
+            <span className="text-white block">Stop Running a $50M Business</span>
             <span className="bg-gradient-to-r from-[#f59e0b] to-[#d97706] bg-clip-text text-transparent block mt-1">
-              Built for Your Business.
+              on a $500 Software Stack.
             </span>
           </motion.h1>
 
@@ -61,21 +61,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-xl sm:text-2xl text-[#94a3b8] max-w-3xl leading-relaxed mb-4"
+            className="text-xl sm:text-2xl text-[#94a3b8] max-w-3xl leading-relaxed mb-10"
           >
-            We turn your QuickBooks, spreadsheets, and gut instinct into a{" "}
+            We build you a{" "}
             <span className="text-white font-semibold">real-time intelligence system</span>{" "}
-            — so you can stop guessing and start scaling.
-          </motion.p>
-
-          {/* Target qualifier */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.28 }}
-            className="text-base text-[#f59e0b]/80 font-medium mb-10"
-          >
-            Built for businesses running enterprise-level operations on small-business tools.
+            — dashboards, AI automation, and operational clarity — custom-built for your industry.
           </motion.p>
 
           {/* CTA */}
@@ -87,20 +77,9 @@ export default function HeroSection() {
           >
             <a
               href="mailto:info@axonedge.tech"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#050d1a] font-bold rounded-xl text-base transition-all duration-200 shadow-xl shadow-[#f59e0b]/20 hover:shadow-[#f59e0b]/35"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#0f1623] font-bold rounded-xl text-base transition-all duration-200 shadow-xl shadow-[#f59e0b]/20 hover:shadow-[#f59e0b]/35"
             >
               Book Your Free Operations Audit →
-            </a>
-            <a
-              href="#pain"
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.querySelector("#pain");
-                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
-              }}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/10 hover:border-[#f59e0b]/30 text-[#94a3b8] hover:text-white font-semibold rounded-xl text-base transition-all duration-200 hover:bg-white/[0.03]"
-            >
-              See How It Works
             </a>
           </motion.div>
 

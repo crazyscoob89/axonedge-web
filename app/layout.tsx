@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AxonEdge Technologies — Operational Clarity. Built for Your Business.",
+  title: "AxonEdge Technologies — AI Operations Consulting",
   description:
-    "AxonEdge turns your QuickBooks, spreadsheets, and gut instinct into a real-time intelligence system. Power BI dashboards + AI automation for SMBs doing $20M–$100M/year.",
+    "Stop running a $50M business on a $500 software stack. AxonEdge builds real-time intelligence systems — Power BI dashboards + AI automation — custom-built for $20M–$100M SMBs.",
   keywords:
     "AI operations consulting, Power BI dashboards, SMB automation, metal fabrication, roofing, freight forwarding, law firm technology, medical practice automation, AxonEdge",
   openGraph: {
-    title: "AxonEdge Technologies — Operational Clarity. Built for Your Business.",
+    title: "AxonEdge Technologies — AI Operations Consulting",
     description:
-      "We turn your existing tools into a real-time intelligence system — custom Power BI dashboards + AI automation for businesses doing $20M–$100M/year.",
+      "We build you a real-time intelligence system — dashboards, AI automation, and operational clarity — custom-built for your industry.",
     type: "website",
     url: "https://axonedge.tech",
   },
@@ -21,7 +21,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-[#050d1a]">{children}</body>
+      <body className="antialiased bg-[#0f1623]">{children}</body>
     </html>
   );
 }
