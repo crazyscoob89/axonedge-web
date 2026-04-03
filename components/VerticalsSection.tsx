@@ -23,12 +23,6 @@ const VERTICALS = [
     solution: "Live load profitability dashboards, automated anomaly alerts for at-risk shipments, and a single source of truth for carrier and customer data.",
   },
   {
-    icon: "⚖️",
-    industry: "Law Firms",
-    problems: ["Billable hour leakage", "Matter profitability mystery", "Client intake bottlenecks"],
-    solution: "Attorney productivity dashboards, matter-level P&L visibility, and automated intake workflows that keep your pipeline clean and accounted for.",
-  },
-  {
     icon: "🏥",
     industry: "Medical Practices",
     problems: ["Revenue cycle blind spots", "No proactive scheduling optimization", "Collections you chase manually"],

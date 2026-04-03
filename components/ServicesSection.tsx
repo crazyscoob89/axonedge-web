@@ -17,7 +17,7 @@ const SERVICES = [
   {
     icon: "🎯",
     title: "Built For Your Vertical",
-    body: "We specialize in metal fabrication, roofing, freight forwarding, law firms, and medical practices. Not a generic tool — a custom solution for your industry.",
+    body: "We specialize in metal fabrication, roofing contractors, freight forwarding, and medical practices. Not a generic tool — a custom solution for your industry.",
   },
 ];
 

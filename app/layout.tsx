@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Stop running a $50M business on a $500 software stack. AxonEdge builds real-time intelligence systems — Power BI dashboards + AI automation — custom-built for $20M–$100M SMBs.",
   keywords:
-    "AI operations consulting, Power BI dashboards, SMB automation, metal fabrication, roofing, freight forwarding, law firm technology, medical practice automation, AxonEdge",
+    "AI operations consulting, Power BI dashboards, SMB automation, metal fabrication, roofing contractors, freight forwarding, medical practice automation, AxonEdge",
   openGraph: {
     title: "AxonEdge Technologies — AI Operations Consulting",
     description:

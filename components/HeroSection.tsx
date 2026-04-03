@@ -7,7 +7,6 @@ const VERTICALS = [
   "Metal Fabrication",
   "Roofing Contractors",
   "Freight Forwarding",
-  "Law Firms",
   "Medical Practices",
 ];
 

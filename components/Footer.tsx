@@ -16,6 +16,8 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-[#475569]">
+            <span className="text-[#94a3b8]">Custom-built for metal fabrication, roofing, freight &amp; medical.</span>
+            <span>·</span>
             <a href="https://axonedge.tech" className="hover:text-[#f59e0b] transition-colors">axonedge.tech</a>
             <span>·</span>
             <a href="mailto:info@axonedge.tech" className="hover:text-[#f59e0b] transition-colors">info@axonedge.tech</a>
