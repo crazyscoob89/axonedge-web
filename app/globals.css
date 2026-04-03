@@ -7,7 +7,28 @@ html {
 }
 
 body {
-  background: #050d1a;
+  background: #080810;
   color: #ffffff;
   font-family: "Inter", system-ui, -apple-system, sans-serif;
 }
+
+/* Dot grid */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Gold pulse glow on CTA */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 18px rgba(245,158,11,0.35), 0 0 36px rgba(245,158,11,0.15); }
+  50%       { box-shadow: 0 0 32px rgba(245,158,11,0.65), 0 0 60px rgba(245,158,11,0.28); }
+}
+.btn-glow { animation: pulse-glow 2.8s ease-in-out infinite; }
+
+/* Live blink */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.dot-blink { animation: blink 1.8s ease-in-out infinite; }
+
+/* Board card border shimmer */
+@keyframes border-shimmer { 0%,100%{opacity:0.45} 50%{opacity:0.9} }
+.board-shimmer { animation: border-shimmer 3s ease-in-out infinite; }

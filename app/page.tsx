@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import IntegrationsBar from "@/components/IntegrationsBar";
 import PainSection from "@/components/PainSection";
 import ServicesSection from "@/components/ServicesSection";
 import CTASection from "@/components/CTASection";
@@ -7,9 +8,10 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#0f1623]">
+    <main className="bg-[#080810]">
       <Navbar />
       <HeroSection />
+      <IntegrationsBar />
       <PainSection />
       <ServicesSection />
       <CTASection />

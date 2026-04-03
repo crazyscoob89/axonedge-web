@@ -33,35 +33,35 @@ const VERTICALS = [
 const container = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1 } },
-};
+} as const;
 
 const card = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
-};
+  show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } },
+} as const;
 
 export default function VerticalsSection() {
-  const ref = useRef(null);
+  const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="verticals" className="py-28 bg-[#050d1a] relative overflow-hidden">
+    <section id="verticals" className="py-28 bg-[#080810] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#f59e0b]/15 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55 }}
           className="max-w-2xl mb-4"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#f59e0b]/20 bg-[#f59e0b]/8 text-[#f59e0b] text-xs font-semibold tracking-widest uppercase mb-5">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#f59e0b]/20 bg-[#f59e0b]/[0.06] text-[#f59e0b] text-xs font-semibold tracking-widest uppercase mb-5">
             Industries We Serve
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
             Not a generic tool.<br />
             <span className="text-[#f59e0b]">Your industry. Your logic.</span>
           </h2>
@@ -70,8 +70,8 @@ export default function VerticalsSection() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg text-[#94a3b8] max-w-3xl mb-14 leading-relaxed"
+          transition={{ duration: 0.55, delay: 0.1 }}
+          className="text-base text-[#6b7280] max-w-3xl mb-14 leading-relaxed"
         >
           Every industry has its own KPIs, its own ops rhythms, and its own version of &ldquo;the thing everyone knows but nobody tracks.&rdquo; We build for the specifics — not a one-size-fits-all dashboard with your logo on it.
         </motion.p>
@@ -87,50 +87,50 @@ export default function VerticalsSection() {
             <motion.div
               key={v.industry}
               variants={card}
-              className="group p-7 rounded-2xl border border-white/6 bg-[#07111f] hover:border-[#f59e0b]/25 transition-all duration-300 flex flex-col"
+              className="group p-6 rounded-xl border border-white/[0.07] hover:border-[#f59e0b]/25 transition-all duration-300 flex flex-col"
+              style={{ background: "#0d0d18" }}
             >
               <div className="flex items-center gap-3 mb-5">
-                <span className="text-3xl">{v.icon}</span>
-                <h3 className="text-lg font-bold text-white group-hover:text-[#f59e0b] transition-colors">{v.industry}</h3>
+                <span className="text-2xl">{v.icon}</span>
+                <h3 className="text-base font-bold text-white group-hover:text-[#f59e0b] transition-colors">{v.industry}</h3>
               </div>
 
-              {/* Problems */}
               <div className="mb-5">
-                <p className="text-xs font-semibold text-[#94a3b8] uppercase tracking-widest mb-3">Common pain points</p>
+                <p className="text-[10px] font-semibold text-[#374151] uppercase tracking-widest mb-3">Common pain points</p>
                 <ul className="space-y-1.5">
                   {v.problems.map((p) => (
                     <li key={p} className="flex items-start gap-2">
-                      <span className="mt-1 shrink-0 text-red-400/70 text-xs">✗</span>
-                      <span className="text-[#94a3b8] text-sm">{p}</span>
+                      <span className="mt-0.5 shrink-0 text-red-500/60 text-[10px]">✗</span>
+                      <span className="text-[#6b7280] text-sm">{p}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Divider */}
-              <div className="border-t border-white/5 mb-5" />
+              <div className="border-t border-white/[0.05] mb-5" />
 
-              {/* Solution */}
               <div className="mt-auto">
-                <p className="text-xs font-semibold text-[#f59e0b] uppercase tracking-widest mb-2">What we build</p>
-                <p className="text-[#94a3b8] text-sm leading-relaxed">{v.solution}</p>
+                <p className="text-[10px] font-semibold text-[#f59e0b] uppercase tracking-widest mb-2">What we build</p>
+                <p className="text-[#6b7280] text-sm leading-relaxed">{v.solution}</p>
               </div>
             </motion.div>
           ))}
 
-          {/* Coming soon card */}
+          {/* Don't see yours */}
           <motion.div
             variants={card}
-            className="p-7 rounded-2xl border border-dashed border-white/10 bg-transparent flex flex-col items-center justify-center text-center min-h-[260px]"
+            className="p-6 rounded-xl border border-dashed border-white/[0.08] flex flex-col items-center justify-center text-center min-h-[240px]"
+            style={{ background: "transparent" }}
           >
             <span className="text-3xl mb-4">🔍</span>
-            <p className="text-white font-bold mb-2">Don&apos;t see your industry?</p>
-            <p className="text-[#94a3b8] text-sm leading-relaxed mb-5">
-              If you&apos;re running a business with real operational complexity and disconnected data, we&apos;d like to talk.
+            <p className="text-white font-bold text-sm mb-2">Don&apos;t see your industry?</p>
+            <p className="text-[#4b5563] text-sm leading-relaxed mb-5">
+              If your operation runs on chaos and you know there&apos;s a better way — we&apos;d like to talk.
             </p>
             <a
-              href="mailto:info@axonedge.tech"
-              className="px-5 py-2.5 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#050d1a] text-sm font-bold rounded-lg transition-all"
+              href="#cta"
+              onClick={(e) => { e.preventDefault(); document.querySelector("#cta")?.scrollIntoView({ behavior: "smooth" }); }}
+              className="px-5 py-2.5 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#080810] text-sm font-bold rounded-full transition-all"
             >
               Let&apos;s Talk →
             </a>

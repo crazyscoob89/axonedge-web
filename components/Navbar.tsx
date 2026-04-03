@@ -6,67 +6,61 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { label: "The Problem", href: "#pain" },
   { label: "What We Build", href: "#services" },
-  { label: "How It Works", href: "#process" },
-  { label: "Industries", href: "#verticals" },
+  { label: "Industries",   href: "#verticals" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#050d1a]/95 backdrop-blur-xl border-b border-[#f59e0b]/10 shadow-lg" : "bg-transparent"
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      style={{ backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/[0.06] ${
+        scrolled ? "bg-[#080810]/92 shadow-2xl shadow-black/50" : "bg-[#080810]/70"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
-          {/* Logo */}
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
             className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg bg-[#f59e0b] flex items-center justify-center transition-opacity group-hover:opacity-90">
+            <div className="w-8 h-8 rounded-lg bg-[#f59e0b] flex items-center justify-center transition-all duration-200 group-hover:shadow-[0_0_18px_rgba(245,158,11,0.55)]">
               <svg width="12" height="16" viewBox="0 0 12 16" fill="none">
-                <path d="M2 2L10 8L2 14" stroke="#050d1a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 2L10 8L2 14" stroke="#080810" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
             <span className="font-bold text-white text-lg tracking-tight">AxonEdge</span>
           </a>
 
-          {/* Desktop */}
           <div className="hidden md:flex items-center gap-7">
             {navLinks.map((l) => (
               <a key={l.href} href={l.href} onClick={(e) => scrollTo(e, l.href)}
-                className="text-[#94a3b8] hover:text-white transition-colors text-sm font-medium">
+                className="text-[#6b7280] hover:text-white transition-colors text-sm font-medium">
                 {l.label}
               </a>
             ))}
-            <a href="mailto:info@axonedge.tech"
-              className="px-5 py-2.5 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#050d1a] text-sm font-bold rounded-lg transition-all duration-200 shadow-lg shadow-[#f59e0b]/20">
+            <a href="#cta" onClick={(e) => scrollTo(e, "#cta")}
+              className="px-5 py-2.5 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#080810] text-sm font-bold rounded-full transition-all duration-200 shadow-lg shadow-[#f59e0b]/25 hover:shadow-[#f59e0b]/45">
               Book Free Audit →
             </a>
           </div>
 
-          {/* Mobile toggle */}
           <button className="md:hidden text-white p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
             <div className="w-6 h-5 flex flex-col justify-between">
               <span className={`block h-0.5 bg-white transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
@@ -77,20 +71,20 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#050d1a]/98 backdrop-blur-xl border-t border-[#f59e0b]/10">
+            className="md:hidden border-t border-white/[0.06]"
+            style={{ backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", background: "rgba(8,8,16,0.97)" }}>
             <div className="px-4 py-5 flex flex-col gap-4">
               {navLinks.map((l) => (
                 <a key={l.href} href={l.href} onClick={(e) => scrollTo(e, l.href)}
-                  className="text-[#94a3b8] hover:text-white transition-colors py-1.5 text-base font-medium">
+                  className="text-[#6b7280] hover:text-white transition-colors py-1.5 text-base font-medium">
                   {l.label}
                 </a>
               ))}
-              <a href="mailto:info@axonedge.tech"
-                className="mt-2 px-5 py-3.5 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#050d1a] text-sm font-bold rounded-lg text-center transition-all">
+              <a href="#cta" onClick={(e) => scrollTo(e, "#cta")}
+                className="mt-2 px-5 py-3.5 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#080810] text-sm font-bold rounded-full text-center transition-all">
                 Book Your Free Operations Audit →
               </a>
             </div>
