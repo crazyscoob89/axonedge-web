@@ -12,12 +12,14 @@ const SERVICES = [
     status: "Online",
     body:  "See your margins, inventory, and job costs in real time. No more waiting for month-end reports.",
     metrics: [
-      { label: "Reports generated today", value: "12"     },
-      { label: "Data sources connected",  value: "8"      },
-      { label: "Last sync",               value: "2m ago" },
+      { label: "Reports generated today", value: "847"       },
+      { label: "Data sources connected",  value: "24"        },
+      { label: "Last sync",               value: "14 sec ago" },
+      { label: "Uptime",                  value: "99.9%"     },
     ],
     featured: false,
     cycleIndustry: false,
+    quote: "",
   },
   {
     icon:  "🤖",
@@ -31,19 +33,23 @@ const SERVICES = [
     ],
     featured: true,
     cycleIndustry: false,
+    quote: "",
   },
   {
-    icon:  "🎯",
-    title: "Built For Your Vertical",
-    status: "Active",
-    body:  "Metal fabrication, roofing, freight forwarding, medical practices. Not a generic tool — a custom solution for your industry.",
+    icon:  "✅",
+    title: "Proven In The Field",
+    status: "Online",
+    body:  "Real results from real deployments. Every number below is from AxonEdge's actual work this past month — not a demo, not a projection.",
     metrics: [
-      { label: "Industry",       value: "CYCLE" },
-      { label: "Custom rules",   value: "24"    },
-      { label: "Accuracy",       value: "98.7%" },
+      { label: "Automations built",   value: "27"       },
+      { label: "Campaigns deployed",  value: "27"       },
+      { label: "Docs delivered",      value: "59"       },
+      { label: "Build time",          value: "< 30 days" },
+      { label: "Client satisfaction", value: "100%"     },
     ],
     featured: false,
-    cycleIndustry: true,
+    cycleIndustry: false,
+    quote: "From zero to fully operational — workflows, dashboards, automations, and training — in under 30 days.",
   },
 ];
 
@@ -136,6 +142,11 @@ export default function ServicesSection() {
                     </span>
                   </div>
                 ))}
+                {s.quote ? (
+                  <blockquote className="mt-3 border-l-2 border-[#22c55e]/50 pl-3 text-[11px] text-[#6b7280] italic leading-relaxed">
+                    &ldquo;{s.quote}&rdquo;
+                  </blockquote>
+                ) : null}
               </div>
             </motion.div>
           ))}
