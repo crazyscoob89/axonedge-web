@@ -2,43 +2,56 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, message } = await req.json();
+    const { name, email, phone, vertical, message } = await req.json();
 
-    if (!name || !email || !message) {
-      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+    if (!name || !email) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Send via Resend
+    // Build detail rows
+    const rows = [
+      { label: "Name", value: name },
+      { label: "Email", value: `<a href="mailto:${email}" style="color:#f59e0b;">${email}</a>` },
+      phone && { label: "Phone", value: phone },
+      vertical && { label: "Vertical", value: vertical },
+    ]
+      .filter(Boolean)
+      .map(
+        (r: any) =>
+          `<tr>
+            <td style="padding:8px 0;color:#606080;width:120px;vertical-align:top;">${r.label}</td>
+            <td style="padding:8px 0;color:#ffffff;font-weight:bold;">${r.value}</td>
+          </tr>`
+      )
+      .join("");
+
+    const messageBlock = message
+      ? `<div style="margin-top:24px;padding:20px;background:#150f1f;border-radius:8px;border-left:3px solid #f59e0b;">
+          <p style="color:#606080;font-size:12px;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;">Message</p>
+          <p style="color:#ffffff;line-height:1.6;margin:0;">${message.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\n/g, "<br/>")}</p>
+        </div>`
+      : "";
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "AxonEdge Contact <onboarding@resend.dev>",
-        to: ["alexm@axonedge.tech"],
+        from: "AxonEdge <onboarding@resend.dev>",
+        to: ["info@axonedge.tech"],
         reply_to: email,
-        subject: `New inquiry from ${name} — AxonEdge`,
+        subject: `New inquiry from ${name}${vertical ? ` (${vertical})` : ""} — AxonEdge`,
         html: `
-          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #0d0d1a; color: #ffffff; padding: 32px; border-radius: 12px;">
-            <h2 style="color: #386aff; margin-bottom: 8px;">New Contact Form Submission</h2>
-            <p style="color: #a0a0b8; margin-bottom: 24px;">axonedge.tech</p>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 8px 0; color: #606080; width: 100px;">Name</td>
-                <td style="padding: 8px 0; color: #ffffff; font-weight: bold;">${name}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #606080;">Email</td>
-                <td style="padding: 8px 0;"><a href="mailto:${email}" style="color: #386aff;">${email}</a></td>
-              </tr>
+          <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#0d0d1a;color:#ffffff;padding:32px;border-radius:12px;">
+            <h2 style="color:#f59e0b;margin-bottom:8px;">New Contact Form Submission</h2>
+            <p style="color:#a0a0b8;margin-bottom:24px;">axonedge.tech</p>
+            <table style="width:100%;border-collapse:collapse;">
+              ${rows}
             </table>
-            <div style="margin-top: 24px; padding: 20px; background: #150f1f; border-radius: 8px; border-left: 3px solid #386aff;">
-              <p style="color: #606080; font-size: 12px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Message</p>
-              <p style="color: #ffffff; line-height: 1.6; margin: 0;">${message.replace(/\n/g, "<br/>")}</p>
-            </div>
-            <p style="color: #404060; font-size: 12px; margin-top: 24px;">Sent from axonedge.tech contact form</p>
+            ${messageBlock}
+            <p style="color:#404060;font-size:12px;margin-top:24px;">Sent from axonedge.tech contact form</p>
           </div>
         `,
       }),
