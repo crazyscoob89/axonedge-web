@@ -1,7 +1,9 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+
+const VERTICALS_CYCLE = ["Metal Fab", "Roofing", "Freight", "Medical"];
 
 const SERVICES = [
   {
@@ -15,6 +17,7 @@ const SERVICES = [
       { label: "Last sync",               value: "2m ago" },
     ],
     featured: false,
+    cycleIndustry: false,
   },
   {
     icon:  "🤖",
@@ -22,11 +25,12 @@ const SERVICES = [
     status: "Online",
     body:  "Automated alerts, reorder triggers, anomaly detection, and AI-assisted quoting. Your operations run themselves.",
     metrics: [
-      { label: "Alerts fired today",   value: "4"  },
-      { label: "Quotes generated",     value: "7"  },
-      { label: "Anomalies detected",   value: "2"  },
+      { label: "Alerts fired today",   value: "47" },
+      { label: "Quotes generated",     value: "31" },
+      { label: "Anomalies detected",   value: "12" },
     ],
     featured: true,
+    cycleIndustry: false,
   },
   {
     icon:  "🎯",
@@ -34,11 +38,12 @@ const SERVICES = [
     status: "Active",
     body:  "Metal fabrication, roofing, freight forwarding, medical practices. Not a generic tool — a custom solution for your industry.",
     metrics: [
-      { label: "Industry",       value: "Metal Fab" },
-      { label: "Custom rules",   value: "24"        },
-      { label: "Accuracy",       value: "98.7%"     },
+      { label: "Industry",       value: "CYCLE" },
+      { label: "Custom rules",   value: "24"    },
+      { label: "Accuracy",       value: "98.7%" },
     ],
     featured: false,
+    cycleIndustry: true,
   },
 ];
 
@@ -55,6 +60,15 @@ const card = {
 export default function ServicesSection() {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  const [verticalIdx, setVerticalIdx] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVerticalIdx((prev) => (prev + 1) % VERTICALS_CYCLE.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="services" className="py-28 bg-[#080810] relative overflow-hidden">
@@ -117,7 +131,9 @@ export default function ServicesSection() {
                 {s.metrics.map((m) => (
                   <div key={m.label} className="flex items-center justify-between border-t border-white/[0.04] pt-2">
                     <span className="text-[#4b5563] text-[11px]">{m.label}</span>
-                    <span className={`text-xs font-bold font-mono ${s.featured ? "text-[#f59e0b]" : "text-white"}`}>{m.value}</span>
+                    <span className={`text-xs font-bold font-mono ${s.featured ? "text-[#f59e0b]" : "text-white"}`}>
+                      {m.value === "CYCLE" ? VERTICALS_CYCLE[verticalIdx] : m.value}
+                    </span>
                   </div>
                 ))}
               </div>

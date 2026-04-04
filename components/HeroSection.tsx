@@ -3,11 +3,24 @@
 import { motion } from "framer-motion";
 
 const BOARD_ROWS = [
-  { dot: "#22c55e", label: "Inventory Alert",   company: "Acme Manufacturing",  action: "Reorder triggered",          time: "2m ago"  },
-  { dot: "#f59e0b", label: "Job Cost Anomaly",  company: "Detected",           action: "-$4,200 variance flagged",   time: "8m ago"  },
-  { dot: "#22c55e", label: "Monthly Dashboard", company: "Updated",            action: "847 new data points synced", time: "15m ago" },
-  { dot: "#22c55e", label: "AI Quote",          company: "Generated",          action: "Response time: 1.4s",        time: "22m ago" },
-  { dot: "#22c55e", label: "Margin Report",     company: "Ready",              action: "Q1 summary delivered",       time: "1h ago"  },
+  { dot: "#22c55e", label: "Inventory Alert",           detail: "Reorder triggered for Steel Sheet 4x8",      time: "2m ago"  },
+  { dot: "#f59e0b", label: "Job Cost Anomaly",           detail: "$4,200 variance flagged on Project #1047",   time: "5m ago"  },
+  { dot: "#22c55e", label: "Dashboard Updated",          detail: "847 new data points synced",                 time: "8m ago"  },
+  { dot: "#22c55e", label: "AI Quote Generated",         detail: "Response time: 1.4s",                        time: "11m ago" },
+  { dot: "#22c55e", label: "Margin Report Ready",        detail: "Q1 summary delivered to team",               time: "15m ago" },
+  { dot: "#22c55e", label: "Scheduling Conflict",        detail: "Auto-resolved — crew reassigned",            time: "19m ago" },
+  { dot: "#f59e0b", label: "Billing Leakage Detected",   detail: "3 unbilled hours on Matter #882",            time: "23m ago" },
+  { dot: "#22c55e", label: "Supply Order Triggered",     detail: "Roofing materials reordered automatically",  time: "28m ago" },
+  { dot: "#22c55e", label: "Patient Follow-up Sent",     detail: "12 reminders dispatched",                    time: "34m ago" },
+  { dot: "#f59e0b", label: "Revenue Cycle Alert",        detail: "4 claims pending > 30 days",                 time: "40m ago" },
+  { dot: "#22c55e", label: "Freight Delay Flagged",      detail: "Shipment #4421 rerouted successfully",       time: "47m ago" },
+  { dot: "#22c55e", label: "Weekly Intelligence Digest", detail: "Delivered to team",                          time: "1h ago"  },
+  { dot: "#f59e0b", label: "Overtime Alert",             detail: "Crew hours exceeded threshold on Job #14",   time: "1h ago"  },
+  { dot: "#22c55e", label: "New Quote Request",          detail: "AI response in 1.2s",                        time: "1h ago"  },
+  { dot: "#22c55e", label: "Anomaly Cleared",            detail: "False positive resolved automatically",      time: "2h ago"  },
+  { dot: "#22c55e", label: "Dashboard Sync",             detail: "Connected 6 data sources",                   time: "2h ago"  },
+  { dot: "#f59e0b", label: "Cost Overrun Warning",       detail: "Job #338 at 94% of budget",                  time: "2h ago"  },
+  { dot: "#22c55e", label: "Compliance Check",           detail: "All records current — no action needed",     time: "3h ago"  },
 ];
 
 const STATS = [
@@ -72,7 +85,7 @@ export default function HeroSection() {
 
             {/* Micro trust badges */}
             <div className="flex flex-wrap gap-3">
-              {["No long-term lock-in", "Built in weeks", "Your data, your system"].map((t) => (
+              {["Built in weeks", "Your data, your system"].map((t) => (
                 <span key={t} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] text-[#6b7280] text-xs font-medium">
                   <span className="text-[#22c55e] text-[10px]">✓</span> {t}
                 </span>
@@ -113,29 +126,41 @@ export default function HeroSection() {
                 <span className="text-[10px] uppercase tracking-widest text-[#374151] font-semibold">Time</span>
               </div>
 
-              {/* Rows */}
-              <div className="divide-y divide-white/[0.04]">
-                {BOARD_ROWS.map((row, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.35, delay: 0.5 + i * 0.1 }}
-                    className="grid grid-cols-[8px_1fr_auto] gap-3 px-4 py-3 items-start hover:bg-white/[0.02] transition-colors"
-                  >
-                    <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0"
-                      style={{ background: row.dot, boxShadow: `0 0 6px ${row.dot}88` }} />
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-white text-xs font-semibold">{row.label}</span>
-                        <span className="text-[#4b5563] text-xs">—</span>
-                        <span className="text-[#6b7280] text-xs">{row.company}</span>
+              {/* Rows — auto-scrolling live feed */}
+              <style>{`
+                @keyframes ops-scroll {
+                  0%   { transform: translateY(0); }
+                  100% { transform: translateY(-50%); }
+                }
+                .ops-scroll-inner {
+                  animation: ops-scroll 36s linear infinite;
+                }
+                .ops-scroll-inner:hover {
+                  animation-play-state: paused;
+                }
+              `}</style>
+              <div style={{ height: '220px', overflow: 'hidden' }} className="relative">
+                <div className="ops-scroll-inner divide-y divide-white/[0.04]">
+                  {[...BOARD_ROWS, ...BOARD_ROWS].map((row, i) => (
+                    <div
+                      key={i}
+                      className="grid grid-cols-[8px_1fr_auto] gap-3 px-4 py-2.5 items-center"
+                    >
+                      <span
+                        className="w-2 h-2 rounded-full flex-shrink-0"
+                        style={{ background: row.dot, boxShadow: `0 0 6px ${row.dot}88` }}
+                      />
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-white text-xs font-semibold">{row.label}</span>
+                          <span className="text-[#4b5563] text-xs">—</span>
+                          <span className="text-[#6b7280] text-xs truncate">{row.detail}</span>
+                        </div>
                       </div>
-                      <p className="text-[#4b5563] text-[11px] mt-0.5 truncate">{row.action}</p>
+                      <span className="text-[#374151] text-[10px] font-mono whitespace-nowrap">{row.time}</span>
                     </div>
-                    <span className="text-[#374151] text-[10px] font-mono whitespace-nowrap">{row.time}</span>
-                  </motion.div>
-                ))}
+                  ))}
+                </div>
               </div>
 
               {/* Footer */}
