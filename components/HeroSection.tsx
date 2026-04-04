@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const BOARD_ROWS = [
-  { dot: "#22c55e", label: "Inventory Alert",   company: "East Coast Metals",  action: "Reorder triggered",          time: "2m ago"  },
+  { dot: "#22c55e", label: "Inventory Alert",   company: "Acme Manufacturing",  action: "Reorder triggered",          time: "2m ago"  },
   { dot: "#f59e0b", label: "Job Cost Anomaly",  company: "Detected",           action: "-$4,200 variance flagged",   time: "8m ago"  },
   { dot: "#22c55e", label: "Monthly Dashboard", company: "Updated",            action: "847 new data points synced", time: "15m ago" },
   { dot: "#22c55e", label: "AI Quote",          company: "Generated",          action: "Response time: 1.4s",        time: "22m ago" },
