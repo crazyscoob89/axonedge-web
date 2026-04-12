@@ -7,7 +7,7 @@ const STEPS = [
   {
     number: "01",
     title: "Free Operations Audit",
-    body: "We start with a 30-minute conversation about how your business actually runs — the tools, the workflows, the blind spots. We'll tell you exactly what's possible before you commit to anything.",
+    body: "We start with a 30-minute conversation about how your business actually runs  the tools, the workflows, the blind spots. We'll tell you exactly what's possible before you commit to anything.",
     tag: "No cost. No obligation.",
   },
   {
@@ -19,7 +19,7 @@ const STEPS = [
   {
     number: "03",
     title: "We Build It",
-    body: "Our team connects your existing systems, builds your Power BI dashboards, and deploys the AI automation layer. We work alongside your team — not over them — so nothing breaks and nobody gets left behind.",
+    body: "Our team connects your existing systems, builds your Power BI dashboards, and deploys the AI automation layer. We work alongside your team  not over them  so nothing breaks and nobody gets left behind.",
     tag: "Connected in weeks, not months.",
   },
   {
@@ -44,7 +44,7 @@ export default function ProcessSection() {
         {/* Header */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="max-w-2xl mb-16"
@@ -70,7 +70,7 @@ export default function ProcessSection() {
             {STEPS.map((step, i) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, x: -24 }}
+                initial={{ x: -24 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.55, delay: i * 0.12, ease: "easeOut" }}
                 className="flex gap-6 group"

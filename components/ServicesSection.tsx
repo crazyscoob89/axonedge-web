@@ -2,12 +2,13 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { BarChart3, Bot, Shield } from "lucide-react";
 
 const VERTICALS_CYCLE = ["Metal Fab", "Roofing", "Freight", "Medical"];
 
 const SERVICES = [
   {
-    icon:  "📊",
+    icon:  "chart",
     title: "Live Business Dashboards",
     status: "Online",
     body:  "See your margins, inventory, and job costs in real time. No more waiting for month-end reports.",
@@ -18,11 +19,10 @@ const SERVICES = [
       { label: "Uptime",                  value: "99.9%"     },
     ],
     featured: false,
-    cycleIndustry: false,
     quote: "",
   },
   {
-    icon:  "🤖",
+    icon:  "bot",
     title: "AI Automation",
     status: "Online",
     body:  "Automated alerts, reorder triggers, anomaly detection, and AI-assisted quoting. Your operations run themselves.",
@@ -32,26 +32,29 @@ const SERVICES = [
       { label: "Anomalies detected",   value: "12" },
     ],
     featured: true,
-    cycleIndustry: false,
     quote: "",
   },
   {
-    icon:  "✅",
+    icon:  "shield",
     title: "Proven In The Field",
     status: "Online",
-    body:  "Real results from real deployments. Every number below is from AxonEdge's actual work this past month — not a demo, not a projection.",
+    body:  "Real results from real deployments. Every number below is from AxonEdge's actual work  not a demo, not a projection.",
     metrics: [
       { label: "Automations built",   value: "27"       },
       { label: "Campaigns deployed",  value: "27"       },
       { label: "Docs delivered",      value: "59"       },
       { label: "Build time",          value: "< 30 days" },
-      { label: "Client satisfaction", value: "100%"     },
     ],
     featured: false,
-    cycleIndustry: false,
-    quote: "From zero to fully operational — workflows, dashboards, automations, and training — in under 30 days.",
+    quote: "From zero to fully operational  workflows, dashboards, automations, and training  in under 30 days.",
   },
 ];
+
+const ICON_MAP: Record<string, React.ReactNode> = {
+  chart:  <BarChart3 className="w-5 h-5 text-[#f59e0b]" />,
+  bot:    <Bot className="w-5 h-5 text-[#f59e0b]" />,
+  shield: <Shield className="w-5 h-5 text-[#f59e0b]" />,
+};
 
 const container = {
   hidden: {},
@@ -85,7 +88,7 @@ export default function ServicesSection() {
 
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
           className="max-w-2xl mb-14"
@@ -94,8 +97,8 @@ export default function ServicesSection() {
             What We Build
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
-            A real-time intelligence system.<br />
-            <span className="text-[#f59e0b]">Built for your operation.</span>
+            Stop firefighting.<br />
+            <span className="text-[#f59e0b]">Start seeing everything.</span>
           </h2>
         </motion.div>
 
@@ -116,10 +119,10 @@ export default function ServicesSection() {
                 boxShadow:    s.featured ? "0 0 40px rgba(245,158,11,0.07)" : "none",
               }}
             >
-              {/* Card title bar */}
+              {/* Card title bar  Lucide icons instead of emojis */}
               <div className="flex items-center gap-2 px-5 py-3 border-b"
                 style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.025)" }}>
-                <span className="text-xl">{s.icon}</span>
+                {ICON_MAP[s.icon]}
                 <span className={`text-sm font-bold flex-1 ${s.featured ? "text-[#f59e0b]" : "text-white"}`}>{s.title}</span>
                 <span className="flex items-center gap-1.5 text-[10px] font-semibold text-[#22c55e]">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e] dot-blink" />
@@ -145,6 +148,7 @@ export default function ServicesSection() {
                 {s.quote ? (
                   <blockquote className="mt-3 border-l-2 border-[#22c55e]/50 pl-3 text-[11px] text-[#6b7280] italic leading-relaxed">
                     &ldquo;{s.quote}&rdquo;
+                    <span className="block mt-1 text-[#4b5563] not-italic text-[10px]"> Recent client deployment, Q1 2026</span>
                   </blockquote>
                 ) : null}
               </div>

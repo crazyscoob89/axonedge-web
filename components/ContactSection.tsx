@@ -57,7 +57,7 @@ export default function ContactSection() {
             <div className="bg-[#0d0d1a] border border-[#386aff]/40 rounded-2xl p-6 shadow-2xl shadow-[#386aff]/20">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-[#386aff]/20 flex items-center justify-center text-xl flex-shrink-0">
-                  ✅
+                  
                 </div>
                 <div>
                   <div className="font-bold text-white text-base mb-1">Message sent!</div>
@@ -69,7 +69,7 @@ export default function ContactSection() {
                   onClick={() => setShowPopup(false)}
                   className="text-[#606080] hover:text-white transition-colors ml-auto flex-shrink-0"
                 >
-                  ✕
+                  
                 </button>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function ContactSection() {
           {/* Left: Content */}
           <motion.div
             ref={ref}
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
@@ -98,14 +98,14 @@ export default function ContactSection() {
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-[#a0a0b8]">
-                <div className="w-10 h-10 rounded-lg bg-[#386aff]/10 border border-[#386aff]/20 flex items-center justify-center text-lg">📧</div>
+                <div className="w-10 h-10 rounded-lg bg-[#386aff]/10 border border-[#386aff]/20 flex items-center justify-center text-lg"></div>
                 <div>
                   <div className="text-xs text-[#606080] mb-0.5">Email</div>
                   <a href="mailto:alexm@axonedge.tech" className="text-white hover:text-[#386aff] transition-colors font-medium">alexm@axonedge.tech</a>
                 </div>
               </div>
               <div className="flex items-center gap-3 text-[#a0a0b8]">
-                <div className="w-10 h-10 rounded-lg bg-[#386aff]/10 border border-[#386aff]/20 flex items-center justify-center text-lg">📍</div>
+                <div className="w-10 h-10 rounded-lg bg-[#386aff]/10 border border-[#386aff]/20 flex items-center justify-center text-lg"></div>
                 <div>
                   <div className="text-xs text-[#606080] mb-0.5">Location</div>
                   <span className="text-white font-medium">Miami, Florida</span>
@@ -116,7 +116,7 @@ export default function ContactSection() {
 
           {/* Right: Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
@@ -146,7 +146,7 @@ export default function ContactSection() {
                     </svg>
                     Sending...
                   </span>
-                ) : "Send Message →"}
+                ) : "Send Message "}
               </button>
               {status === "error" && (
                 <p className="text-center text-xs text-red-400">

@@ -1,115 +1,127 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
+import { MapPin, Briefcase, Shield, User } from "lucide-react";
 
-const services = [
+const WHY_CARDS = [
   {
-    icon: "📱",
-    title: "Mobile Apps",
-    description:
-      "Consumer mobile apps for iOS and Android. Games, tools, and platforms built for the Latin market and beyond.",
-    highlight: "iOS & Android",
+    icon: <Briefcase className="w-5 h-5 text-[#f59e0b]" />,
+    title: "We've Run Operations Too",
+    body: "Our founder spent 15+ years managing IT infrastructure for companies doing $10M&ndash;$100M. We don't just build dashboards  we understand the operational reality behind the data.",
   },
   {
-    icon: "🤖",
-    title: "AI Solutions",
-    description:
-      "Custom AI systems that plug into your business. From ticket automation to natural language data queries.",
-    highlight: "ARGUS AI",
+    icon: <Shield className="w-5 h-5 text-[#f59e0b]" />,
+    title: "You Built On Enterprise-Grade Infrastructure",
+    body: "We build on Microsoft, AWS, and Azure  the same stack Fortune 500s run. Your data stays secure, your dashboards stay fast, and your operations run on infrastructure that scales with you. No fragile DIY tools.",
   },
   {
-    icon: "💼",
-    title: "IT Services",
-    description:
-      "Managed IT services for growing businesses. Infrastructure, support, and strategy.",
-    highlight: "Managed IT",
+    icon: <User className="w-5 h-5 text-[#f59e0b]" />,
+    title: "Fixed Price. No Surprises.",
+    body: "Every engagement starts with a fixed-price scope. You know exactly what you're getting, what it costs, and when it's done. No hourly billing surprises.",
   },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
 export default function AboutSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" className="py-32 bg-[#0d0d1a] relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-[#386aff]/5 blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-[#6d40ff]/5 blur-3xl translate-x-1/2 translate-y-1/2" />
+    <section id="about" className="py-28 bg-[#080810] dot-grid relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#f59e0b]/15 to-transparent" />
+      <div className="absolute right-0 top-1/3 w-[500px] h-[500px] rounded-full bg-[#f59e0b]/[0.03] blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
           ref={ref}
+          initial={{ y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55 }}
+          className="max-w-2xl mb-14"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#386aff]/20 bg-[#386aff]/10 text-[#386aff] text-xs font-semibold tracking-widest uppercase mb-4">
-            What We Do
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#f59e0b]/20 bg-[#f59e0b]/[0.06] text-[#f59e0b] text-xs font-semibold tracking-widest uppercase mb-5">
+            Who We Are
           </div>
-          <h2 className="text-5xl sm:text-6xl font-black text-white mb-4">
-            What We <span className="bg-gradient-to-r from-[#386aff] to-[#a78bfa] bg-clip-text text-transparent">Build</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
+            Built by operators.<br />
+            <span className="text-[#f59e0b]">Not consultants.</span>
           </h2>
-          <p className="text-[#a0a0b8] text-lg max-w-2xl mx-auto">
-            Three core disciplines. One mission: give you technology you actually own.
-          </p>
         </motion.div>
 
-        {/* Service cards — border-only, spacious */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {services.map((service) => (
-            <motion.div
-              key={service.title}
-              variants={itemVariants}
-              className="relative rounded-2xl p-10 group cursor-default border border-white/10 hover:border-[#386aff]/50 transition-all duration-300 overflow-hidden"
-            >
-              {/* Top accent line on hover */}
-              <div className="absolute top-0 left-0 w-0 group-hover:w-full h-[2px] bg-gradient-to-r from-[#386aff] to-[#a78bfa] transition-all duration-500 rounded-full" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
 
-              {/* Very subtle bg on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-[#386aff]/5 to-transparent rounded-2xl" />
+          {/* Left: Founder card */}
+          <motion.div
+            initial={{ y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: 0.1 }}
+            className="lg:col-span-1 rounded-xl p-6 border border-[#f59e0b]/25"
+            style={{ background: "rgba(245,158,11,0.05)" }}
+          >
+            {/* Founder headshot */}
+            <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-[#f59e0b]/30">
+              <Image
+                src="/alex-headshot.png"
+                alt="Alex Martinez — Founder & CEO"
+                width={80}
+                height={80}
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
 
-              {/* Icon */}
-              <div className="relative z-10 text-5xl mb-6 group-hover:animate-float inline-block">
-                {service.icon}
-              </div>
+            <h3 className="text-lg font-bold text-white mb-1">Alex Martinez</h3>
+            <p className="text-[#f59e0b] text-sm font-semibold mb-1">Founder & CEO</p>
+            <div className="flex items-center gap-1.5 text-[#6b7280] text-xs mb-4">
+              <MapPin className="w-3 h-3" />
+              South Florida
+            </div>
 
-              {/* Badge */}
-              <div className="relative z-10 inline-block px-2.5 py-1 rounded-md bg-[#386aff]/15 text-[#386aff] text-xs font-semibold mb-4">
-                {service.highlight}
-              </div>
+            <p className="text-[#6b7280] text-sm leading-relaxed mb-4">
+              15+ years managing IT infrastructure and operations for companies doing $10M&ndash;$100M in revenue. Built and scaled MSP operations from the ground up.
+            </p>
 
-              {/* Content */}
-              <h3 className="relative z-10 text-xl font-bold text-white mb-3">
-                {service.title}
-              </h3>
-              <p className="relative z-10 text-[#a0a0b8] leading-relaxed text-sm">
-                {service.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+            <p className="text-[#9ca3af] text-sm leading-relaxed mb-4">
+              After watching mid-market companies waste hundreds of thousands on enterprise tools they never fully used  or run critical operations on spreadsheets  Alex built AxonEdge to fill the gap: real intelligence systems, built fast, at a price that makes sense.
+            </p>
+
+            <div className="flex flex-wrap gap-2">
+              {["Power BI", "AI/ML", "Infrastructure", "Operations"].map((tag) => (
+                <span key={tag} className="px-2.5 py-1 rounded-full text-[10px] font-semibold text-[#f59e0b] border border-[#f59e0b]/20 bg-[#f59e0b]/[0.06]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right: Why cards */}
+          <div className="lg:col-span-2 space-y-4">
+            {WHY_CARDS.map((c, i) => (
+              <motion.div
+                key={c.title}
+                initial={{ y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.55, delay: 0.2 + i * 0.1 }}
+                className="p-5 rounded-xl border border-white/[0.07] hover:border-[#f59e0b]/20 transition-all duration-200"
+                style={{ background: "#0d0d18" }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="shrink-0 mt-0.5 w-10 h-10 rounded-lg flex items-center justify-center"
+                    style={{ background: "rgba(245,158,11,0.1)" }}>
+                    {c.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-white text-base font-bold mb-1">{c.title}</h3>
+                    <p className="text-[#6b7280] text-sm leading-relaxed">{c.body}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+        </div>
       </div>
     </section>
   );

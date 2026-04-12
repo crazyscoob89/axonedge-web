@@ -7,38 +7,38 @@ import { useRef } from "react";
 const apps = [
   {
     name: "El Fichazo",
-    description: "Cuban dominoes — the classic way",
+    description: "Cuban dominoes  the classic way",
     platform: "iOS & Google Play",
     status: "launch",
-    icon: "🁣",
-    emoji: "🎲",
+    icon: "",
+    emoji: "",
     color: "#386aff",
   },
   {
     name: "Cubilete",
-    description: "Cuban dice game for 2–6 players",
+    description: "Cuban dice game for 26 players",
     platform: "Mobile",
     status: "soon",
-    icon: "🎯",
-    emoji: "🎰",
+    icon: "",
+    emoji: "",
     color: "#6d40ff",
   },
   {
-    name: "Parqués",
+    name: "Parqus",
     description: "The Colombian board game, digital",
     platform: "Mobile",
     status: "soon",
-    icon: "♟️",
-    emoji: "♟️",
+    icon: "",
+    emoji: "",
     color: "#a78bfa",
   },
   {
-    name: "Lotería Real",
+    name: "Lotera Real",
     description: "Mexican bingo reinvented",
     platform: "Mobile",
     status: "soon",
-    icon: "🃏",
-    emoji: "🃏",
+    icon: "",
+    emoji: "",
     color: "#386aff",
   },
   {
@@ -46,8 +46,8 @@ const apps = [
     description: "Group savings made simple",
     platform: "Mobile",
     status: "soon",
-    icon: "💰",
-    emoji: "💰",
+    icon: "",
+    emoji: "",
     color: "#6d40ff",
   },
   {
@@ -55,8 +55,8 @@ const apps = [
     description: "Latin sounds & memes, on demand",
     platform: "Mobile",
     status: "soon",
-    icon: "🎵",
-    emoji: "🎵",
+    icon: "",
+    emoji: "",
     color: "#a78bfa",
   },
 ];
@@ -91,7 +91,7 @@ export default function AppsSection() {
         {/* Section header */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
@@ -103,7 +103,7 @@ export default function AppsSection() {
             Our <span className="bg-gradient-to-r from-[#386aff] to-[#a78bfa] bg-clip-text text-transparent">Apps</span>
           </h2>
           <p className="text-[#a0a0b8] text-lg max-w-2xl mx-auto">
-            Building the digital playground for the Latin community — and the
+            Building the digital playground for the Latin community  and the
             world.
           </p>
         </motion.div>
@@ -167,7 +167,7 @@ export default function AppsSection() {
                           color: app.color,
                         }}
                       >
-                        📱 App Store
+                         App Store
                       </span>
                       <span
                         className="text-xs font-medium px-2 py-1 rounded-md"
@@ -176,12 +176,12 @@ export default function AppsSection() {
                           color: app.color,
                         }}
                       >
-                        🤖 Google Play
+                         Google Play
                       </span>
                     </>
                   ) : (
                     <span className="text-xs text-[#a0a0b8]">
-                      🔔 In development
+                       In development
                     </span>
                   )}
                 </div>
@@ -192,7 +192,7 @@ export default function AppsSection() {
 
         {/* Bottom note */}
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={{}}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.8 }}
           className="text-center text-[#a0a0b8] text-sm mt-12"

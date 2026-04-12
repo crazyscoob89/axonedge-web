@@ -3,7 +3,10 @@ import HeroSection from "@/components/HeroSection";
 import IntegrationsBar from "@/components/IntegrationsBar";
 import PainSection from "@/components/PainSection";
 import ServicesSection from "@/components/ServicesSection";
+import VerticalsSection from "@/components/VerticalsSection";
+import AboutSection from "@/components/AboutSection";
 import CTASection from "@/components/CTASection";
+import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -14,7 +17,10 @@ export default function Home() {
       <IntegrationsBar />
       <PainSection />
       <ServicesSection />
+      <VerticalsSection />
+      <AboutSection />
       <CTASection />
+      <FAQSection />
       <Footer />
     </main>
   );

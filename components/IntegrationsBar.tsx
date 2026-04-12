@@ -16,7 +16,7 @@ export default function IntegrationsBar() {
     <section className="border-y border-white/[0.06] bg-[#080810]" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={{}}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5 }}
           className="text-center text-[10px] font-semibold tracking-widest uppercase text-[#374151] mb-5"
@@ -24,7 +24,7 @@ export default function IntegrationsBar() {
           Works with your existing tools
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ y: 8 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="flex flex-wrap justify-center gap-2"

@@ -8,20 +8,20 @@ const values = [
   {
     stat: "100%",
     label: "Ownership",
-    description: "Your data, your code, your product. We build it — you own it forever.",
-    icon: "🔑",
+    description: "Your data, your code, your product. We build it  you own it forever.",
+    icon: "",
   },
   {
     stat: "$0",
     label: "Lock-in",
     description: "No SaaS dependency, no vendor control. Deploy anywhere. Migrate anytime.",
-    icon: "🔓",
+    icon: "",
   },
   {
     stat: "Full",
     label: "Stack",
     description: "Mobile, AI, web, infrastructure. One team, every layer, zero handoffs.",
-    icon: "⚡",
+    icon: "",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function WhySection() {
         {/* Header */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
@@ -69,7 +69,7 @@ export default function WhySection() {
           {values.map((item, i) => (
             <motion.div
               key={item.label}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               className="relative rounded-2xl p-10 text-center group cursor-default border border-white/10 hover:border-[#386aff]/50 transition-all duration-300 overflow-hidden"
@@ -96,7 +96,7 @@ export default function WhySection() {
 
         {/* Bottom CTA strip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="rounded-2xl border border-[#386aff]/20 bg-gradient-to-r from-[#386aff]/10 to-[#6d40ff]/10 p-10 sm:p-14 text-center"
@@ -105,14 +105,14 @@ export default function WhySection() {
             Ready to own your technology?
           </h3>
           <p className="text-[#a0a0b8] mb-8 max-w-xl mx-auto">
-            Tell us what you&apos;re building. We&apos;ll help you ship it — and make sure it&apos;s yours.
+            Tell us what you&apos;re building. We&apos;ll help you ship it  and make sure it&apos;s yours.
           </p>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 px-10 py-5 bg-[#386aff] hover:bg-[#4f7eff] text-white font-bold rounded-xl transition-all duration-200 glow-blue hover:glow-blue-strong text-lg"
           >
             Let&apos;s Build Together
-            <span>→</span>
+            <span></span>
           </a>
         </motion.div>
       </div>

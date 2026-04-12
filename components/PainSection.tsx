@@ -4,10 +4,11 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const PAIN_POINTS = [
-  "You're running your operation on spreadsheets, gut instinct, and tribal knowledge",
-  "You find out about margin leaks and problems weeks after they happen",
-  "Your team is drowning in manual data entry instead of making decisions",
-  "You know you need better systems — but off-the-shelf software doesn't fit and enterprise tools cost a fortune",
+  "Your operation runs on spreadsheets, tribal knowledge, and \"ask Mike  he knows\"",
+  "You find out about cost overruns and margin leaks weeks after the damage is done",
+  "Your team spends 40+ hours/month on manual data entry that a system should handle",
+  "You've looked at enterprise software  but it costs $500K and takes 18 months to deploy",
+  "You KNOW there's a better way. You just haven't found one that fits your size and budget.",
 ];
 
 const container = {
@@ -31,10 +32,10 @@ export default function PainSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Header */}
+        {/* Header  rewritten with visceral CEO copy */}
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
           className="max-w-2xl mb-12"
@@ -43,9 +44,8 @@ export default function PainSection() {
             Sound Familiar?
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
-            If you&apos;ve ever stared at a spreadsheet<br className="hidden sm:block" />{" "}
-            <span className="text-[#6b7280] font-normal">wondering if there&apos;s a better way —</span>
-            <br className="hidden sm:block" /> there is.
+            You didn&apos;t build a $20M company<br className="hidden sm:block" />{" "}
+            <span className="text-[#6b7280] font-normal">to spend your nights reconciling spreadsheets.</span>
           </h2>
         </motion.div>
 
@@ -78,29 +78,33 @@ export default function PainSection() {
             </motion.ul>
           </div>
 
-          {/* Right: credibility card */}
+          {/* Right: credibility card  fixed revenue range to $10M-$100M */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.4 }}
             className="rounded-xl p-6 border border-[#f59e0b]/25"
             style={{ background: "rgba(245,158,11,0.05)" }}
           >
             <p className="text-base font-bold text-white leading-relaxed mb-3">
-              This isn&apos;t just a big-company problem.
+              Here&apos;s the thing most &ldquo;AI companies&rdquo; won&apos;t tell you:
+            </p>
+            <p className="text-[#6b7280] text-sm leading-relaxed mb-4">
+              You don&apos;t need a $500K SAP deployment. You don&apos;t need to rip out your existing tools.
             </p>
             <p className="text-[#6b7280] text-sm leading-relaxed mb-5">
-              Whether you&apos;re doing $2M or $20M, if your data is scattered and your decisions are based on gut — you&apos;re leaving money on the table.
+              You need someone to connect what you already have, build you a dashboard that tells the truth,
+              and automate the stuff that&apos;s eating your team alive.
             </p>
             <p className="text-sm font-semibold text-white leading-relaxed">
-              AxonEdge builds custom intelligence systems in weeks — not years — at a price that makes sense for growing businesses.
+              That&apos;s what we do for $10M&ndash;$100M companies. In weeks, not years.
             </p>
             <a
               href="#cta"
               onClick={(e) => { e.preventDefault(); document.querySelector("#cta")?.scrollIntoView({ behavior: "smooth" }); }}
               className="mt-5 inline-flex items-center gap-1.5 text-[#f59e0b] text-sm font-semibold hover:underline"
             >
-              See if it&apos;s right for you →
+              Let&apos;s find your blind spots &rarr;
             </a>
           </motion.div>
 
@@ -109,3 +113,4 @@ export default function PainSection() {
     </section>
   );
 }
+

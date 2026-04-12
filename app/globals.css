@@ -32,3 +32,39 @@ body {
 /* Board card border shimmer */
 @keyframes border-shimmer { 0%,100%{opacity:0.45} 50%{opacity:0.9} }
 .board-shimmer { animation: border-shimmer 3s ease-in-out infinite; }
+
+/* Ops Board vertical ticker - 35 rows x 38px = 1330px per cycle */
+@keyframes axon-ticker {
+  0%   { margin-top: 0px; }
+  100% { margin-top: -1330px; }
+}
+.axon-ticker {
+  animation: axon-ticker 60s linear infinite;
+}
+.axon-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* P1 FIX: CSS fallback for opacity:0 JS animation dependency */
+/* Ensures content is visible even if JS/framer-motion fails to load */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fallback: if JS hasn't hydrated after 3s, show everything */
+.js-loading [style*="opacity: 0"],
+.js-loading [style*="opacity:0"] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* noscript fallback */
+noscript + main [style*="opacity"],
+noscript + main [style*="transform"] {
+  opacity: 1 !important;
+  transform: none !important;
+}

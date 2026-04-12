@@ -2,11 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Phone } from "lucide-react";
 
 const navLinks = [
   { label: "The Problem", href: "#pain" },
   { label: "What We Build", href: "#services" },
   { label: "Industries",   href: "#verticals" },
+  { label: "About",        href: "#about" },
+  { label: "FAQ",          href: "#faq" },
 ];
 
 export default function Navbar() {
@@ -48,16 +51,23 @@ export default function Navbar() {
             <span className="font-bold text-white text-lg tracking-tight">AxonEdge</span>
           </a>
 
-          <div className="hidden md:flex items-center gap-7">
+          <div className="hidden md:flex items-center gap-6">
             {navLinks.map((l) => (
               <a key={l.href} href={l.href} onClick={(e) => scrollTo(e, l.href)}
                 className="text-[#6b7280] hover:text-white transition-colors text-sm font-medium">
                 {l.label}
               </a>
             ))}
+
+            {/* Phone number */}
+            <a href="tel:+13057126416" className="flex items-center gap-1.5 text-[#9ca3af] hover:text-[#f59e0b] transition-colors text-sm font-medium">
+              <Phone className="w-3.5 h-3.5" />
+              <span className="hidden lg:inline">(305) 712-6416</span>
+            </a>
+
             <a href="#cta" onClick={(e) => scrollTo(e, "#cta")}
               className="px-5 py-2.5 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#080810] text-sm font-bold rounded-full transition-all duration-200 shadow-lg shadow-[#f59e0b]/25 hover:shadow-[#f59e0b]/45">
-              Book Free Audit →
+              Book Free Audit 
             </a>
           </div>
 
@@ -83,9 +93,16 @@ export default function Navbar() {
                   {l.label}
                 </a>
               ))}
+
+              {/* Phone in mobile menu */}
+              <a href="tel:+13057126416" className="flex items-center gap-2 text-[#f59e0b] py-1.5 text-base font-medium">
+                <Phone className="w-4 h-4" />
+                (305) 712-6416
+              </a>
+
               <a href="#cta" onClick={(e) => scrollTo(e, "#cta")}
                 className="mt-2 px-5 py-3.5 bg-[#f59e0b] hover:bg-[#fbbf24] text-[#080810] text-sm font-bold rounded-full text-center transition-all">
-                Book Your Free Operations Audit →
+                Book Your Free Operations Audit 
               </a>
             </div>
           </motion.div>
