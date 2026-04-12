@@ -9,7 +9,7 @@ const WHY_CARDS = [
   {
     icon: <Briefcase className="w-5 h-5 text-[#f59e0b]" />,
     title: "We've Run Operations Too",
-    body: "Our founder spent 15+ years managing IT infrastructure for companies doing $10M&ndash;$100M. We don't just build dashboards  we understand the operational reality behind the data.",
+    body: "Our founder spent 15+ years managing IT infrastructure for companies doing $10M–$100M. We don't just build dashboards — we understand the operational reality behind the data.",
   },
   {
     icon: <Shield className="w-5 h-5 text-[#f59e0b]" />,

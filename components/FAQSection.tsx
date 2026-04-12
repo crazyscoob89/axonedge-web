@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "Who actually builds this?",
-    a: "AxonEdge was founded by Alex Martinez, who spent 15+ years managing IT infrastructure for companies doing $10M&ndash;$100M. Every system is built by our core team  not outsourced to contractors.",
+    a: "AxonEdge was founded by Alex Martinez, who spent 15+ years managing IT infrastructure for companies doing $10M–$100M. Every system is built by our core team — not outsourced to contractors.",
   },
   {
     q: "Can I talk to a current client?",
