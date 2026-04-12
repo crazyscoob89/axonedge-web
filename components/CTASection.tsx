@@ -130,8 +130,8 @@ export default function CTASection() {
                 </div>
               </div>
 
-              {/* Contact alternatives */}
-              <div className="mt-6 space-y-2">
+              {/* Contact alternatives - moved to below form */}
+              {false && <div className="mt-6 space-y-2">
                 <p className="text-[#374151] text-sm flex items-center gap-2">
                   <Phone className="w-3.5 h-3.5 text-[#f59e0b]" />
                   Prefer to talk?{" "}
@@ -147,7 +147,7 @@ export default function CTASection() {
                 <p className="text-[#374151] text-xs mt-2">
                   Response time: &lt; 4 hours during business hours
                 </p>
-              </div>
+              </div>}
             </div>
 
             {/*  RIGHT  FORM  */}
@@ -260,6 +260,23 @@ export default function CTASection() {
                   <p className="text-center text-[#374151] text-xs pt-1">
                     You&apos;ll walk away knowing exactly where to start  whether you work with us or not.
                   </p>
+
+                  {/* Contact alternatives */}
+                  <div className="pt-4 mt-2 border-t border-white/[0.06] space-y-2">
+                    <p className="text-[#374151] text-sm flex items-center gap-2">
+                      <Phone className="w-3.5 h-3.5 text-[#f59e0b]" />
+                      Prefer to talk?{" "}
+                      <a href="tel:+13057126416" className="text-[#f59e0b] hover:underline font-medium">(305) 712-6416</a>
+                    </p>
+                    <p className="text-[#374151] text-sm flex items-center gap-2">
+                      <Mail className="w-3.5 h-3.5 text-[#f59e0b]" />
+                      Email:{" "}
+                      <a href="mailto:info@axonedge.tech" className="text-[#f59e0b] hover:underline font-medium">info@axonedge.tech</a>
+                    </p>
+                    <p className="text-[#374151] text-xs">
+                      Response time: &lt; 4 hours during business hours
+                    </p>
+                  </div>
                 </form>
               )}
             </div>
